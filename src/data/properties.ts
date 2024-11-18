@@ -1,4 +1,12 @@
-export const properties = [
+export interface Property {
+  id: number;
+  name: string;
+  image: string;
+  price: string;
+  description: string;
+}
+
+export const properties: Property[] = [
   {
     id: 1,
     name: "Luxury Villa in Malibu",
