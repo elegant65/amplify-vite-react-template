@@ -38,6 +38,50 @@ body {
   height: auto;
 }
 
+/* Slideshow container */
+.gallery-slideshow {
+  position: relative;
+  width: 100%; /* Adjust as needed for your layout */
+  max-width: 600px; /* Optional: set a max width */
+  margin: 0 auto; /* Center the slideshow */
+  overflow: hidden; /* Ensure only one image is visible at a time */
+  border-radius: 10px; /* Optional: Rounded corners */
+  background: #000; /* Background color to highlight the images */
+}
+
+/* Slide wrapper */
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+}
+
+/* Each slide */
+.slide {
+  min-width: 100%; /* Each slide takes the full width of the container */
+  text-align: center;
+  transition: opacity 0.5s ease-in-out; /* Optional: Smooth opacity changes */
+}
+
+/* Buttons */
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#prev {
+  left: 10px;
+}
+
+#next {
+  right: 10px;
+}
 
 /* 
 #root {
