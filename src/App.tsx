@@ -1,17 +1,19 @@
 
+import { useState, useEffect } from 'react';
 import './App.css';
 import { properties, Property } from './data/properties'; // Import properties
-import  { useState, useEffect } from 'react';
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % properties.length);
+    setCurrentSlide((prev: number) => (prev + 1) % properties.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + properties.length) % properties.length);
+    setCurrentSlide((prev: number) =>
+      prev === 0 ? properties.length - 1 : prev - 1
+    );
   };
 
   useEffect(() => {
@@ -45,13 +47,24 @@ const App = () => {
         <p>Discover our exclusive range of farmhouses and luxury properties.</p>
       </section>
 
-    
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
 
       <section id="gallery">
         <h2>Gallery</h2>
         <div className="gallery-slideshow">
           <button id="prev" onClick={prevSlide}>❮</button>
-          <div className="slides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+          <div
+            className="slides"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
             {properties.map((property: Property) => (
               <div className="slide" key={property.id}>
                 <img src={property.image} alt={property.name} />
@@ -62,21 +75,12 @@ const App = () => {
           <button id="next" onClick={nextSlide}>❯</button>
         </div>
       </section>
-
-      <section id="contact">
-        <h2>Contact Us</h2>
-        <form>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message"></textarea>
-          <button type="submit">Submit</button>
-        </form>
-      </section>
     </div>
   );
 };
 
 export default App;
+
 
 
 
