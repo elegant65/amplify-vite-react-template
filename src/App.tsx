@@ -1,6 +1,7 @@
 
 import './App.css';
 import { properties, Property } from './data/properties'; // Import properties
+import  { useState, useEffect } from 'react';
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
