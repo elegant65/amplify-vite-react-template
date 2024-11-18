@@ -11,6 +11,12 @@ header, section {
   width: 100%;
 }
 
+/* Centralize content and apply consistent spacing */
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
 .hero {
   text-align: center;
