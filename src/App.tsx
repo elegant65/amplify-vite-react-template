@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./App.css"; // Import global styles
 import { properties } from "./data/properties"; // Import properties data
 
