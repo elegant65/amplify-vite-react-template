@@ -1,16 +1,16 @@
+/* Apply full-width layout */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #8a2be2, #f8f9fa); /* Optional gradient */
+  box-sizing: border-box;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: #333;
-  color: white;
+header, section {
+  width: 100%;
 }
+
 
 .hero {
   text-align: center;
