@@ -1,53 +1,104 @@
-/* Apply full-width layout */
+/* Global Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #8a2be2, #f8f9fa); /* Optional gradient */
   box-sizing: border-box;
+  color: #333;
 }
 
 header, section {
   width: 100%;
 }
 
-/* Centralize content and apply consistent spacing */
 section {
-  max-width: 1200px;
+  max-width: 1200px; /* Content width */
   margin: 0 auto;
   padding: 2rem;
 }
 
-.hero {
-  text-align: center;
-  padding: 2rem;
-  background: url('/assets/hero.jpg') no-repeat center center/cover;
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #333;
   color: white;
+  width: 100%; /* Full width */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.property-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
 }
 
-.property-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f0a500;
+}
+
+/* Sections */
+section {
+  margin-bottom: 4rem; /* Add spacing between sections */
+}
+
+h1, h2 {
   text-align: center;
 }
 
-.property-card img {
-  width: 100%;
-  height: auto;
+p {
+  text-align: center;
 }
 
-/* Slideshow container */
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form input, form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  align-self: flex-end;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #555;
+}
+
+/* Gallery Section */
 .gallery-slideshow {
   position: relative;
-  width: 100%; /* Adjust as needed for your layout */
   max-width: 600px; /* Optional: set a max width */
   margin: 0 auto; /* Center the slideshow */
   overflow: hidden; /* Ensure only one image is visible at a time */
@@ -55,20 +106,24 @@ section {
   background: #000; /* Background color to highlight the images */
 }
 
-/* Slide wrapper */
 .slides {
   display: flex;
   transition: transform 0.5s ease-in-out; /* Smooth slide transition */
 }
 
-/* Each slide */
 .slide {
   min-width: 100%; /* Each slide takes the full width of the container */
   text-align: center;
   transition: opacity 0.5s ease-in-out; /* Optional: Smooth opacity changes */
 }
 
-/* Buttons */
+.slide img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px;
+}
+
+/* Slideshow Buttons */
 button {
   position: absolute;
   top: 50%;
@@ -78,7 +133,8 @@ button {
   color: white;
   padding: 0.5rem;
   cursor: pointer;
-  z-index: 10;
+  z-index: 10; /* Higher z-index ensures buttons are on top */
+  border-radius: 50%;
 }
 
 #prev {
@@ -88,6 +144,39 @@ button {
 #next {
   right: 10px;
 }
+
+/* Section-Specific Z-Index Management */
+.gallery-slideshow {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2rem;
+}
+
+section#contact {
+  z-index: 1;
+  position: relative;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  form {
+    padding: 0 1rem;
+  }
+
+  .gallery-slideshow {
+    max-width: 100%; /* Ensure it uses the full screen width */
+  }
+
+  button {
+    padding: 0.3rem;
+  }
+}
+
 
 /* 
 #root {
