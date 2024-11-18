@@ -5,12 +5,12 @@ export interface Property {
   price: string;
   description: string;
 }
-
+import villaImg from "../assets/villa.jpg";
 export const properties: Property[] = [
   {
     id: 1,
     name: "Luxury Villa in Malibu",
-    image: "/assets/villa.jpg",
+    image: villaImg, //"/assets/villa.jpg",
     price: "$3,000,000",
     description: "A stunning villa with ocean views and modern amenities.",
   },
