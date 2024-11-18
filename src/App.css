@@ -13,21 +13,35 @@ header, section {
 }
 
 section {
-  max-width: 1200px; /* Content width */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 2rem; /* Ensure padding works on all screen sizes */
+  text-align: center; /* Center-align all text inside sections */
 }
-
+@media (max-width: 768px) {
+  section {
+    padding: 1.5rem 1rem; /* Reduce padding for smaller screens */
+    margin: 0 1rem; /* Add margin to prevent cramped layout */
+  }
+}
+section {
+  margin-bottom: 4rem;
+}
 /* Header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Keep header above other elements */
   background-color: #333;
   color: white;
-  width: 100%; /* Full width */
+  padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+/* Add some space below the fixed header */
+body {
+  padding-top: 80px; /* Match the height of the header */
 }
 
 .logo {
@@ -38,8 +52,16 @@ section {
 
 .nav-links {
   display: flex;
-  list-style: none;
+  justify-content: flex-end; /* Push links to the right */
   gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center; /* Center links in mobile view */
+    gap: 1rem;
+  }
 }
 
 .nav-links a {
@@ -66,13 +88,26 @@ p {
   text-align: center;
 }
 
-/* Contact Form */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   max-width: 600px;
   margin: 0 auto;
+  padding: 1rem; /* Add some padding inside the form */
+  background: #f8f9fa; /* Optional: Light background for better visibility */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+form button {
+  align-self: center; /* Center the submit button */
+  padding: 0.7rem 1.5rem;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 form input, form textarea {
@@ -81,30 +116,26 @@ form input, form textarea {
   border-radius: 5px;
 }
 
-form button {
-  align-self: flex-end;
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
 form button:hover {
   background-color: #555;
 }
 
-/* Gallery Section */
 .gallery-slideshow {
   position: relative;
-  max-width: 600px; /* Optional: set a max width */
+  max-width: 100%; /* Use full width */
+  width: 80%; /* 80% of the viewport width */
   margin: 0 auto; /* Center the slideshow */
-  overflow: hidden; /* Ensure only one image is visible at a time */
-  border-radius: 10px; /* Optional: Rounded corners */
-  background: #000; /* Background color to highlight the images */
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
 }
+
+@media (max-width: 768px) {
+  .gallery-slideshow {
+    width: 95%; /* Almost full width on smaller screens */
+  }
+}
+
 
 .slides {
   display: flex;
