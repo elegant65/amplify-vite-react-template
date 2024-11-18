@@ -3,45 +3,23 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #8a2be2, #f8f9fa); /* Optional gradient */
+  background: linear-gradient(to bottom, #8a2be2, #f8f9fa);
   box-sizing: border-box;
   color: #333;
+  padding-top: 80px; /* Space for fixed header */
 }
 
-header, section {
-  width: 100%;
-}
-
-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 2rem; /* Ensure padding works on all screen sizes */
-  text-align: center; /* Center-align all text inside sections */
-}
-@media (max-width: 768px) {
-  section {
-    padding: 1.5rem 1rem; /* Reduce padding for smaller screens */
-    margin: 0 1rem; /* Add margin to prevent cramped layout */
-  }
-}
-section {
-  margin-bottom: 4rem;
-}
 /* Header */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Keep header above other elements */
+  z-index: 1000;
   background-color: #333;
   color: white;
   padding: 1rem 2rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-/* Add some space below the fixed header */
-body {
-  padding-top: 80px; /* Match the height of the header */
 }
 
 .logo {
@@ -51,24 +29,19 @@ body {
 }
 
 .nav-links {
-  display: flex;
-  justify-content: flex-end; /* Push links to the right */
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    align-items: center; /* Center links in mobile view */
-    gap: 1rem;
-  }
+  display: flex; /* Ensure horizontal layout */
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
   font-size: 1rem;
-  transition: color 0.3s;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
@@ -77,7 +50,16 @@ body {
 
 /* Sections */
 section {
-  margin-bottom: 4rem; /* Add spacing between sections */
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  section {
+    max-width: 70%;
+  }
 }
 
 h1, h2 {
@@ -88,20 +70,30 @@ p {
   text-align: center;
 }
 
+/* Contact Form */
 form {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack elements */
+  align-items: center;
   gap: 1rem;
   max-width: 600px;
   margin: 0 auto;
-  padding: 1rem; /* Add some padding inside the form */
-  background: #f8f9fa; /* Optional: Light background for better visibility */
+  padding: 1rem;
+  background: #f8f9fa;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
+form input,
+form textarea {
+  width: 100%; /* Full-width fields */
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 form button {
-  align-self: center; /* Center the submit button */
+  width: auto;
   padding: 0.7rem 1.5rem;
   background-color: #333;
   color: white;
@@ -110,47 +102,33 @@ form button {
   transition: background-color 0.3s ease;
 }
 
-form input, form textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
 form button:hover {
   background-color: #555;
 }
 
+/* Gallery Section */
 .gallery-slideshow {
   position: relative;
-  max-width: 100%; /* Use full width */
-  width: 80%; /* 80% of the viewport width */
-  margin: 0 auto; /* Center the slideshow */
+  max-width: 80%; /* Stretch gallery across the screen */
+  margin: 0 auto;
   overflow: hidden;
   border-radius: 10px;
   background: #000;
 }
 
-@media (max-width: 768px) {
-  .gallery-slideshow {
-    width: 95%; /* Almost full width on smaller screens */
-  }
-}
-
-
 .slides {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-  min-width: 100%; /* Each slide takes the full width of the container */
+  min-width: 100%;
   text-align: center;
-  transition: opacity 0.5s ease-in-out; /* Optional: Smooth opacity changes */
 }
 
 .slide img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
   border-radius: 10px;
 }
 
@@ -164,7 +142,7 @@ button {
   color: white;
   padding: 0.5rem;
   cursor: pointer;
-  z-index: 10; /* Higher z-index ensures buttons are on top */
+  z-index: 10;
   border-radius: 50%;
 }
 
@@ -176,22 +154,11 @@ button {
   right: 10px;
 }
 
-/* Section-Specific Z-Index Management */
-.gallery-slideshow {
-  position: relative;
-  z-index: 5;
-  margin-bottom: 2rem;
-}
-
-section#contact {
-  z-index: 1;
-  position: relative;
-}
-
-/* Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
   }
 
@@ -200,7 +167,7 @@ section#contact {
   }
 
   .gallery-slideshow {
-    max-width: 100%; /* Ensure it uses the full screen width */
+    width: 95%;
   }
 
   button {
