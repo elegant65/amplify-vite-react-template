@@ -1,6 +1,6 @@
 
-import "./App.css"; // Import global styles
-import { properties } from "./data/properties"; // Import properties data
+import './App.css';
+import { properties, Property } from './data/properties'; // Correct import
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
       <section id="properties">
         <h3>Featured Properties</h3>
         <div className="property-grid">
-          {properties.map((property) => (
+          {properties.map((property: Property) => (
             <div key={property.id} className="property-card">
               <img src={property.image} alt={property.name} />
               <h4>{property.name}</h4>
@@ -51,6 +51,7 @@ const App = () => {
 };
 
 export default App;
+
 
 /*import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
@@ -90,6 +91,7 @@ function App() {
     </main>
   );
 }
-*/
+
 
 export default App;
+*/
