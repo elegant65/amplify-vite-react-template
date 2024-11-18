@@ -1,48 +1,73 @@
 
 import './App.css';
-import { properties, Property } from './data/properties'; // Correct import
+import { properties, Property } from './data/properties'; // Import properties
 
 const App = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % properties.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + properties.length) % properties.length);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Auto slideshow every 5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div>
       {/* Header */}
       <header className="header">
-        <h1>Rustic Eco Farms</h1>
+        <div className="logo">Rustic Eco Farms</div>
         <nav>
-          <a href="#about">About</a>
-          <a href="#properties">Properties</a>
-          <a href="#contact">Contact</a>
+          <ul className="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+          </ul>
         </nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="hero">
-        <h2>Find Your Dream Property</h2>
-        <p>Discover stunning properties along the Delhi-Mumbai Expressway.</p>
+      {/* Sections */}
+      <section id="home">
+        <h1>Welcome to Rustic Eco Farms</h1>
+        <p>Your dream properties along the Delhi-Mumbai Expressway.</p>
       </section>
 
-      {/* Properties Section */}
-      <section id="properties">
-        <h3>Featured Properties</h3>
-        <div className="property-grid">
-          {properties.map((property: Property) => (
-            <div key={property.id} className="property-card">
-              <img src={property.image} alt={property.name} />
-              <h4>{property.name}</h4>
-              <p>{property.price}</p>
-              <p>{property.description}</p>
-            </div>
-          ))}
+      <section id="about">
+        <h2>About Us</h2>
+        <p>Discover our exclusive range of farmhouses and luxury properties.</p>
+      </section>
+
+    
+
+      <section id="gallery">
+        <h2>Gallery</h2>
+        <div className="gallery-slideshow">
+          <button id="prev" onClick={prevSlide}>❮</button>
+          <div className="slides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+            {properties.map((property: Property) => (
+              <div className="slide" key={property.id}>
+                <img src={property.image} alt={property.name} />
+                <p>{property.name}</p>
+              </div>
+            ))}
+          </div>
+          <button id="next" onClick={nextSlide}>❯</button>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact">
-        <h3>Contact Us</h3>
+        <h2>Contact Us</h2>
         <form>
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <textarea placeholder="Message"></textarea>
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea placeholder="Your Message"></textarea>
           <button type="submit">Submit</button>
         </form>
       </section>
@@ -51,6 +76,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 /*import { useEffect, useState } from "react";
