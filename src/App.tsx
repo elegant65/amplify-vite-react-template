@@ -1,80 +1,76 @@
 
-import { useState, useEffect } from 'react';
+//import { useState, useEffect } from 'react';
 import './App.css';
-import { properties, Property } from './data/properties'; // Import properties
-
+//import { properties, Property } from './data/properties'; // Import properties
+import logo from './assets/logo.jpg';
+import villaimg from './assets/villa.jpg';
+import apartmentimg from './assets/apartment.jpg';
 const App = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev: number) => (prev + 1) % properties.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev: number) =>
-      prev === 0 ? properties.length - 1 : prev - 1
-    );
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Auto slideshow every 5 seconds
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div>
-      {/* Header */}
-      <header className="header">
-        <div className="logo">Rustic Eco Farms</div>
-        <nav>
-          <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#gallery">Gallery</a></li>
+    <div className="App">
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="navbar-logo-card">
+          <img className="navbar-logo" src = {logo}></img>
+        </div>
+          <ul className="navbar-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
-        </nav>
-      </header>
+        <a className="navbar-cta" href="tel:+91-8448342364">+91-8448342364</a>
+      </nav>
 
-      {/* Sections */}
-      <section id="home">
-        <h1>Welcome to Rustic Eco Farms</h1>
-        <p>Your dream properties along the Delhi-Mumbai Expressway.</p>
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>RUSTIC ECO FARMS</h1>
+          <p>We offer farmhouses along Delhi Mumbai Expressway near Alwar</p>
+        </div>
       </section>
 
-      <section id="about">
+      {/* About Section */}
+      <section id="about" className="about-section">
         <h2>About Us</h2>
-        <p>Discover our exclusive range of farmhouses and luxury properties.</p>
+        <p>
+          Rustic Eco Farms offers serene countryside experiences close to city life. With sustainable practices and eco-friendly designs, we provide a perfect escape from urban chaos.
+        </p>
       </section>
 
-      <section id="contact">
+      {/* Projects Section */}
+      <section id="projects" className="projects-section">
+        <h2>Our Projects</h2>
+        <div className="projects-grid">
+          <div className="project-card">
+              <img src = {villaimg}/>
+              <h3>Luxury Villa</h3>
+              <p>A peaceful retreat offering modern amenities in nature.</p>
+          </div>
+          <div className="project-card">
+              <img src = {apartmentimg}/>
+              <h3>Timber Plantations</h3>
+              <p>A sustainable timber project for eco-conscious investors.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact-section">
         <h2>Contact Us</h2>
         <form>
           <input type="text" placeholder="Your Name" required />
           <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message"></textarea>
+          <textarea placeholder="Your Message" required></textarea>
           <button type="submit">Submit</button>
         </form>
       </section>
 
-      <section id="gallery">
-        <h2>Gallery</h2>
-        <div className="gallery-slideshow">
-          <button id="prev" onClick={prevSlide}>❮</button>
-          <div
-            className="slides"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {properties.map((property: Property) => (
-              <div className="slide" key={property.id}>
-                <img src={property.image} alt={property.name} />
-                <p>{property.name}</p>
-              </div>
-            ))}
-          </div>
-          <button id="next" onClick={nextSlide}>❯</button>
+      {/* Footer */}
+      <footer>
+        <div className="footer-content">
+          <p>© 2024 Rustic Eco Farms. All rights reserved.</p>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
