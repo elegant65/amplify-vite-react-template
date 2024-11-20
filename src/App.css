@@ -1,11 +1,17 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
 /* General Styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #ffffff;
   background: #748461;
+ 
 }
-
+img {
+  max-width: 100%;
+  height: auto;
+}
 /* Navbar */
 .navbar {
   display: flex;
@@ -30,7 +36,6 @@ body {
   list-style: none;
   display: flex;
   gap: 5rem;
-  
 }
 
 .navbar-links li a {
@@ -50,6 +55,59 @@ body {
   text-shadow: 2px 2px 8px rgba(2, 2, 2, 0.7);
 }
 
+/* Menu Icon */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+  background: none;
+  border: none;
+  padding: 0rem;
+}
+
+.menu-icon:focus,
+.menu-icon:active {
+  outline: none; /* Removes the box on focus */
+  box-shadow: none; /* Removes any default browser shadow */
+  -webkit-tap-highlight-color: transparent; /* Removes touch highlight color on mobile */
+}
+
+/* Mobile Navbar Links */
+.navbar-links-mobile {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 120px; /* Adjusted to place the menu below the logo */
+  left: 160px;
+  width: 50%;
+  background-color: #748461c2;
+  padding: 1rem;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.navbar-links-mobile.open {
+  display: flex;
+}
+
+.navbar-links-mobile ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links-mobile ul li {
+  margin: 1rem 0;
+}
+
+.navbar-links-mobile ul li a {
+  color: rgb(207, 147, 27);
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
 
 
 /* Hero Section */
@@ -84,12 +142,14 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 6rem;
+  font-family: 'Great Vibes', cursive; /* Replace with the name of the stylish font */
+  font-size: 10rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Adjust shadow intensity */
   margin-bottom: 1rem;
 }
 
 .hero-content p {
+  font-family: 'Montserrat', sans-serif; /* Simpler font for subtext */
   font-size: 3rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
@@ -102,24 +162,26 @@ body {
 }
 
 .about-section h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .about-section p {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 /* Projects Section */
 .projects-section {
   padding: 3rem 2rem;
   text-align: center;
- 
 }
 
+.projects-section h2{
+  font-size: 3rem;
+}
 .projects-grid {
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -128,29 +190,26 @@ body {
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
-  max-width: 500px;
-  min-height: 400px;
   text-align: center;
 }
 
 .project-card img {
   width: 100%;
-  height: 100%;
+  height: 80%;
 }
 
 .project-card h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 1rem 0;
 }
 
 .project-card p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 0 1rem 1rem;
 }
 
 /* Contact Section */
 .contact-section {
-  padding: 3rem 2rem;
   text-align: center;
 }
 
@@ -161,25 +220,31 @@ body {
 .contact-section form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 1rem;
-  max-width: 400px;
   margin: 0 auto;
 }
 
 .contact-section input,
 .contact-section textarea {
+  width: 40%;
   padding: 0.8rem;
-  border: 1px solid #ccc;
+  margin: 1rem;
+  
+  border: 1px solid #000000;
   border-radius: 5px;
 }
 
 .contact-section button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 0.8rem;
-  cursor: pointer;
+  width: 20%;
+  background: #20631b;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
+  color: rgb(207, 147, 27);
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(2, 2, 2, 0.7);
 }
 
 /* Footer */
@@ -191,7 +256,70 @@ footer {
 }
 
 
+/* Mobile-Specific Styles */
+@media (max-width: 768px) {
+  /* Hide navbar links and call-to-action */
+  .navbar-links,
+  .navbar-cta {
+    display: none;
+  }
+  .menu-icon {
+    display: block; /* Show menu icon only on mobile */
+  }
+  .navbar {
+    position: relative; /* Ensure the menu appears relative to the navbar */
+  }
+  /* Adjust logo padding */
+  .navbar-logo-card {
+    margin: 0 auto; /* Center the logo on mobile */
+  }
+  .hero-section {
+    height: 40vh;
+  }
+  /* Adjust hero section text size */
+  .hero-content h1 {
+    font-size: 3.5rem; /* Smaller size for mobile */
+  }
 
+  .hero-content p {
+    font-size: 1.25rem; /* Adjust paragraph size */
+  }
+  .contact-section input,
+  .contact-section textarea {
+    width: 80%;
+  }
+  .contact-section button {
+    width: 40%;
+  }
+
+  /* Reduce padding for sections */
+  .about-section,
+  .projects-section,
+  .contact-section {
+    padding: 1rem;
+  }
+
+  .about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  .about-section p {
+    font-size: 1rem;
+  }
+  .projects-section h2{
+    font-size: 2rem;
+  }
+  .project-card img {
+    height: 65%;
+  }
+  .project-card h3 {
+    font-size: 1.5rem;
+  }
+  .project-card p {
+    font-size: 1rem;
+    
+  }
+}
 /* 
 #root {
   max-width: 1280px;
