@@ -5,26 +5,44 @@ import './App.css';
 import logo from './assets/logo.jpg';
 import villaimg from './assets/villa.jpg';
 import apartmentimg from './assets/apartment.jpg';
+import { useState } from 'react';
+
+
 const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <div className="App">
       {/* Navbar */}
-      <nav className="navbar">
+      <section className="navbar">
         <div className="navbar-logo-card">
           <img className="navbar-logo" src = {logo}></img>
         </div>
-          <ul className="navbar-links">
+        <button className="menu-icon" onClick={toggleMenu}>
+          ☰ {/* This is the menu icon */}
+        </button>
+        <div className={`navbar-links-mobile ${isMenuOpen ? 'open' : ''}`}>
+          <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+        </div>
+        <ul className="navbar-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
         <a className="navbar-cta" href="tel:+91-8448342364">+91-8448342364</a>
-      </nav>
+      </section>
 
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1>RUSTIC ECO FARMS</h1>
+          <h1>Rustic Eco Farms</h1>
           <p>We offer farmhouses along Delhi Mumbai Expressway near Alwar</p>
         </div>
       </section>
