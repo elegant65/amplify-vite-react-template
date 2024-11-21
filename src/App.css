@@ -72,24 +72,50 @@ img {
   -webkit-tap-highlight-color: transparent; /* Removes touch highlight color on mobile */
 }
 
+/* Animation for sliding down the menu */
+@keyframes slideDown {
+  from {
+    max-height: 0;
+    opacity: 0;
+  }
+  to {
+    max-height: 300px; /* Adjust based on the content height */
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    max-height: 300px; /* Match the height from slideDown */
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
 /* Mobile Navbar Links */
 .navbar-links-mobile {
   display: none;
   flex-direction: column;
-  position: absolute;
-  top: 120px; /* Adjusted to place the menu below the logo */
-  left: 160px;
-  width: 50%;
-  background-color: #748461c2;
-  padding: 1rem;
+  padding: 0rem;
   text-align: center;
-  z-index: 10;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden; /* Ensure the animation appears smooth */
+  max-height: 0; /* Initial state for animation */
+  
 }
 
 
 .navbar-links-mobile.open {
   display: flex;
+  animation: slideDown 0.3s forwards;
+}
+
+.navbar-links-mobile.closing {
+  display: flex;
+  animation: slideUp 0.3s forwards;
 }
 
 .navbar-links-mobile ul {
@@ -105,7 +131,7 @@ img {
 .navbar-links-mobile ul li a {
   color: rgb(207, 147, 27);
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
@@ -120,7 +146,6 @@ img {
   text-align:center;
   text-decoration: solid;
   background: url("./assets/hero.jpg") no-repeat center center/cover ;
-
   position: relative;
 }
 .hero-section::before {
@@ -255,6 +280,34 @@ footer {
   color: white;
 }
 
+/* Persistent WhatsApp Button */
+.whatsapp-button {
+  position: fixed;
+  bottom: 40px; /* Adjust the position from the bottom */
+  right: 40px; /* Adjust the position from the right */
+  z-index: 1000; /* Ensure it appears above other elements */
+  border-radius: 50%;
+  width: 100px; /* Size of the button */
+  height: 100px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.whatsapp-button img {
+  width : 100%; /* WhatsApp icon size */
+  height: 100%;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button:active {
+  transform: scale(0.9); /* Slightly shrink on click */
+}
+
 
 /* Mobile-Specific Styles */
 @media (max-width: 768px) {
@@ -266,9 +319,9 @@ footer {
   .menu-icon {
     display: block; /* Show menu icon only on mobile */
   }
-  .navbar {
-    position: relative; /* Ensure the menu appears relative to the navbar */
-  }
+  
+  
+  
   /* Adjust logo padding */
   .navbar-logo-card {
     margin: 0 auto; /* Center the logo on mobile */
@@ -293,10 +346,13 @@ footer {
   }
 
   /* Reduce padding for sections */
-  .about-section,
   .projects-section,
   .contact-section {
     padding: 1rem;
+  }
+
+  .about-section {
+    padding: 0.75rem;
   }
 
   .about-section h2 {
@@ -317,7 +373,12 @@ footer {
   }
   .project-card p {
     font-size: 1rem;
-    
+  }
+  .whatsapp-button {
+    bottom: 25px;
+    right: 25px;
+    height: 65px;
+    width: 65px;
   }
 }
 /* 
