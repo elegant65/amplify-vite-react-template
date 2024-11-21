@@ -6,13 +6,23 @@ import logo from './assets/logo.jpg';
 import villaimg from './assets/villa.jpg';
 import apartmentimg from './assets/apartment.jpg';
 import { useState } from 'react';
-
+import whatsappIcon from './assets/whatsapp-icon.png';
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    if (isMenuOpen) {
+      // Start closing animation
+      setIsMenuOpen(false);
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300); // Match the duration of the slideUp animation
+    } else {
+      setIsMenuOpen(true);
+    }
   };
   return (
     <div className="App">
@@ -22,21 +32,26 @@ const App = () => {
           <img className="navbar-logo" src = {logo}></img>
         </div>
         <button className="menu-icon" onClick={toggleMenu}>
-          ☰ {/* This is the menu icon */}
+          {isMenuOpen ? '⋀' : '☰'} {/* This is the menu icon */}
         </button>
-        <div className={`navbar-links-mobile ${isMenuOpen ? 'open' : ''}`}>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
+        
         <ul className="navbar-links">
-          <li><a href="#about">About</a></li>
+          <li><a href="#about">About Us</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <a className="navbar-cta" href="tel:+91-8448342364">+91-8448342364</a>
+      </section>
+
+      {/* Expandible navbar for mobile */}
+      <section className="navbar-expandible">
+        <div className={`navbar-links-mobile ${isMenuOpen ? 'open' :  isAnimating ? 'closing' : ''}`}>
+          <ul>
+            <li><a href="#about" onClick={toggleMenu}>About Us</a></li>
+            <li><a href="#projects" onClick={toggleMenu}>Projects</a></li>
+            <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
+          </ul>
+        </div>
       </section>
 
       {/* Hero Section */}
@@ -89,6 +104,17 @@ const App = () => {
           <p>© 2024 Rustic Eco Farms. All rights reserved.</p>
         </div>
       </footer>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/8448342364" // Replace with your WhatsApp number
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-button"
+        aria-label="Chat with us on WhatsApp"
+      >
+      <img src={whatsappIcon} alt="WhatsApp" />
+      </a>
     </div>
   );
 };
