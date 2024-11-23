@@ -8,6 +8,9 @@ body {
   background: #748461;
  
 }
+.App {
+  text-align: center;
+}
 img {
   max-width: 100%;
   height: auto;
@@ -21,11 +24,13 @@ img {
   color: rgb(207, 147, 27);
 }
 .navbar-logo-card {
+  display: flex;
   border: 0px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
+  max-height: 200px;
   max-width: 200px;
-  text-align: center;
+  align-items: center;
 }
 .navbar-logo {
   width: 100%;
@@ -35,7 +40,7 @@ img {
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 5rem;
+  gap: 10rem;
 }
 
 .navbar-links li a {
@@ -45,14 +50,22 @@ img {
   color: rgb(207, 147, 27);
 }
 
+.navbar-links li a:hover {
+  color: rgb(163, 116, 22);
+}
+
 .navbar-cta {
   background: #20631b;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 5px;
   color: rgb(207, 147, 27);
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-shadow: 2px 2px 8px rgba(2, 2, 2, 0.7);
+}
+
+.navbar-cta:hover {
+  color: rgb(163, 116, 22);
 }
 
 /* Menu Icon */
@@ -196,42 +209,72 @@ img {
 }
 
 /* Projects Section */
-.projects-section {
-  padding: 3rem 2rem;
-  text-align: center;
-}
+
 
 .projects-section h2{
   font-size: 3rem;
 }
-.projects-grid {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
-.project-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
+/* Project Slide */
+
+.project-slide {
+  flex-shrink: 0;
+  width: auto;
+  max-width: 700px;
   text-align: center;
+  padding: 2px; /* Optional padding */
+  background-color: #fff; /* Optional background color */
+  border-radius: 10px; /* Optional rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
 }
 
-.project-card img {
+.project-slide img {
   width: 100%;
-  height: 80%;
+  height: 65vh;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.project-slide img:hover {
+  transform: scale(1.05);
 }
 
-.project-card h3 {
+
+.project-slide h3 {
   font-size: 2rem;
   margin: 1rem 0;
+  color: #666;
 }
 
-.project-card p {
+.project-slide p {
   font-size: 1.5rem;
-  padding: 0 1rem 1rem;
+  color: #666;
 }
+
+/* Swiper container */
+/* Make the entire Swiper area swipable */
+.swiper {
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  pointer-events: auto; /* Ensure touch works on gaps */
+}
+/* Swiper Container */
+.swiper-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Swiper Wrapper */
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 
 /* Contact Section */
 .contact-section {
@@ -239,6 +282,7 @@ img {
 }
 
 .contact-section h2 {
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -365,14 +409,17 @@ footer {
   .projects-section h2{
     font-size: 2rem;
   }
-  .project-card img {
-    height: 65%;
+  .project-slide {
+    max-width: 65%; /* Slightly smaller on mobile */
   }
-  .project-card h3 {
-    font-size: 1.5rem;
+  .project-slide img {
+    height: 35vh;
   }
-  .project-card p {
+  .project-slide h3 {
     font-size: 1rem;
+  }
+  .project-slide p {
+    font-size: 0.75rem;
   }
   .whatsapp-button {
     bottom: 25px;
