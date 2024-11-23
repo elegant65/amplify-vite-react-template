@@ -98,9 +98,6 @@ const App = () => {
           grabCursor={false}
           centeredSlides={false}
           loop={true}
-          touchStartPreventDefault={false}
-          touchMoveStopPropagation={false}
-        
           navigation={true}
           className="projects-swiper"
          
