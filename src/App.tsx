@@ -12,7 +12,6 @@ import project6Img from './assets/project6.jpg';
 import { useState } from 'react';
 import whatsappIcon from './assets/whatsapp-icon.png';
 
-import "swiper/swiper-bundle.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
